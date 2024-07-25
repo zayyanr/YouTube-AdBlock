@@ -5,4 +5,5 @@ How to set it up:
 - Click 'Load unpacked'.
 - Select the YouTube-AdBlock folder.
 <br/>
-Now you shouldn't get anymore ads on YouTube, disable anti-virus or paste background.js into the directory if it says Virus Detected.
+Now you shouldn't get anymore ads on YouTube
+-- disable anti-virus or paste background.js into the directory if it says Virus Detected.
