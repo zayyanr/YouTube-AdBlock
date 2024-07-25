@@ -16,13 +16,13 @@ const removeSponsoredContentOnHome = () => {
 
 const removeSponsoredContentOnVideoCompanion = () => {
   const findAndRemoveSponsoredContent = () => {
-    const richItemRenderers = document.querySelectorAll('ytd-companion-slot-renderer');
+    const companionSlotRenderers = document.querySelectorAll('ytd-companion-slot-renderer');
 
-    richItemRenderers.forEach(richItemRenderer => {
-      const sponsoredElement = richItemRenderer.querySelector('div.badge-shape-wiz__text');
+    companionSlotRenderers.forEach(companionSlotRenderer => {
+      const sponsoredElement = companionSlotRenderer.querySelector('div.badge-shape-wiz__text');
 
       if (sponsoredElement && sponsoredElement.textContent.trim().startsWith('Sponsored')) {
-        richItemRenderer.remove();
+        companionSlotRenderer.remove();
       }
     });
   };
@@ -32,13 +32,13 @@ const removeSponsoredContentOnVideoCompanion = () => {
 
 const removeSponsoredContentOnVideoAd = () => {
   const findAndRemoveSponsoredContent = () => {
-    const richItemRenderers = document.querySelectorAll('ytd-ad-slot-renderer');
+    const AdSlotRenderers = document.querySelectorAll('ytd-ad-slot-renderer');
 
-    richItemRenderers.forEach(richItemRenderer => {
-      const sponsoredElement = richItemRenderer.querySelector('div.badge-shape-wiz__text');
+    AdSlotRenderers.forEach(AdSlotRenderer => {
+      const sponsoredElement = AdSlotRenderer.querySelector('div.badge-shape-wiz__text');
 
       if (sponsoredElement && sponsoredElement.textContent.trim().startsWith('Sponsored')) {
-        richItemRenderer.remove();
+        AdSlotRenderer.remove();
       }
     });
   };
