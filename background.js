@@ -1,4 +1,4 @@
-/* chrome.webNavigation.onCompleted.addListener((details) => {
+chrome.webNavigation.onCompleted.addListener((details) => {
   chrome.tabs.sendMessage(details.tabId, { action: "checkForAds" });
 }, { url: [{ urlMatches: 'https://www.youtube.com/*' }] });
 
@@ -13,6 +13,4 @@ chrome.webRequest.onBeforeRequest.addListener(
   },
   { urls: ["*://*.doubleclick.net/*", "*://*.googleads.g.doubleclick.net/*", "*://*.googleusercontent.com/*"] }, // Match all subdomains and paths
   ["blocking"]
-); */
-
-// UNCOMMENT TO BLOCK REQUESTS OF ADS SINCE ANTI-VIRUS IS TRIGGERED.
+);
