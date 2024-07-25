@@ -1,16 +1,58 @@
+if (chrome.declarativeNetRequest) {
+  chrome.declarativeNetRequest.updateDynamicRules({
+    addRules: [
+      {
+        id: 1,
+        priority: 1,
+        action: {
+          type: 'block'
+        },
+        condition: {
+          urlFilter: '*://*.*.doubleclick.net/*',
+          resourceTypes: ['sub_frame', 'main_frame', 'script', 'image', 'xmlhttprequest']
+        }
+      },
+      {
+        id: 2,
+        priority: 1,
+        action: {
+          type: 'block'
+        },
+        condition: {
+          urlFilter: '*://*.googleads.g.doubleclick.net/*/*',
+          resourceTypes: ['sub_frame', 'main_frame', 'script', 'image', 'xmlhttprequest']
+        }
+      },
+      {
+        id: 3,
+        priority: 1,
+        action: {
+          type: 'block'
+        },
+        condition: {
+          urlFilter: '*://*.googleusercontent.com/*',
+          resourceTypes: ['sub_frame', 'main_frame', 'script', 'image', 'xmlhttprequest']
+        }
+      }
+    ],
+    removeRuleIds: [1, 2, 3]
+  }, () => {
+    if (chrome.runtime.lastError) {
+      console.error('Error updating dynamic rules:', chrome.runtime.lastError);
+    }
+  });
+} else {
+  console.error('Declarative Net Request API is not available');
+}
+
 chrome.webNavigation.onCompleted.addListener((details) => {
   chrome.tabs.sendMessage(details.tabId, { action: "checkForAds" });
-}, { url: [{ urlMatches: 'https://www.youtube.com/*' }] });
+}, { 
+  url: [
+    { hostContains: 'youtube.com' }
+  ]
+});
 
-chrome.webRequest.onBeforeRequest.addListener(
-  function(details) {
-    // Check if the URL contains "googleads.g.doubleclick.net" or "doubleclick.net"
-    if (details.url.includes("googleads.g.doubleclick.net") || details.url.includes("doubleclick.net") || details.url.includes("googleusercontent.com")) {
-      console.log("Blocking URL: " + details.url);
-      return { cancel: true };
-    }
-    return { cancel: false };
-  },
-  { urls: ["*://*.doubleclick.net/*", "*://*.googleads.g.doubleclick.net/*", "*://*.googleusercontent.com/*"] }, // Match all subdomains and paths
-  ["blocking"]
-);
+console.log('declarativeNetRequest:', chrome.declarativeNetRequest);
+console.log('webNavigation:', chrome.webNavigation);
+console.log('webRequest:', chrome.webRequest);
