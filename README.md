@@ -1,5 +1,6 @@
 How to set it up:
 - Extract downloaded file.
+- Uncomment background.js
 - Go to: chrome://extensions/
 - Enable developer mode.
 - Click 'Load unpacked'.
