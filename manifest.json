@@ -1,11 +1,12 @@
 {
   "manifest_version": 3,
-  "name": "Universal YouTube Adblocker",
+  "name": "Universal YouTube AdBlocker",
   "version": "1.0",
   "description": "A Google Chrome extension that blocks ads on YouTube.",
   "permissions": [
     "activeTab",
-    "webNavigation"
+    "webNavigation",
+    "declarativeNetRequest"
   ],
   "background": {
     "service_worker": "background.js"
@@ -20,9 +21,9 @@
     "<all_urls>"
   ],
   "icons": {
-      "16": "icon16.png",
-      "32": "icon32.png",
-      "48": "icon48.png",
-      "128": "icon128.png"
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
   }
 }
